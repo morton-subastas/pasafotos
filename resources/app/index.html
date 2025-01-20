@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pasafoto</title>
+        <meta charset="utf-8">
+
+        <!-- Bootstrap -->
+        <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
+
+
+        <script src="js/animafotoXlote.js"></script>
+        <script src="js/function_teclado.js"></script>
+        <script src="node_modules/jquery/dist/jquery.js"></script>
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>
+
+        <script src="js/sweetalert.min.js"></script>
+
+
+
+    </head>
+
+    <body>
+
+        <div id="myModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+          <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+              <div class="input-group">
+                
+                </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="CenterxyBox" style="background-color: #005645; position: absolute; width: 100%;" id="conf">
+                <div>
+                    <div class="container" >
+                        <div class="row" style="margin: 50px auto;">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6" style="background-color: white; padding: 20px; border-radius: 44px 44px 44px 44px;">
+                                <center>
+                                    <h1>Configuración</h1>
+                                </center>
+                                <br>
+                                <div class="form-group">
+                                  <center>
+                                      <h3>Subasta</h3>
+                                  </center>
+                                    <div class="row">
+                                        <div class="col-xs-2"></div>
+                                        <div class="col-xs-2">
+                                            <p style="text-align: center;"><strong>Num:</strong></p>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <input type="text" class="form-control" id="forNum" placeholder="0000">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <br>
+                                <div class="form-group">
+                                  <center>
+                                      <h3>Divisas</h3>
+                                  </center>
+                                    <div class="row">
+                                        <div class="col-xs-2"></div>
+                                        <div class="col-xs-2">
+                                            <img src="img/usd.svg" alt="" style="width: 100px; display:block; margin: auto;">
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <input type="text" class="form-control" id="forUSD" placeholder="Dólar" value="19.07">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-xs-2"></div>
+                                        <div class="col-xs-2">
+                                            <img src="img/eur.svg" alt="" style="width: 100px;">
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <input type="text" class="form-control" id="forEUR" placeholder="Euro" value="21.39">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-xs-2"></div>
+                                        <div class="col-xs-2">
+                                            <img src="img/lib.svg" alt="" style="width: 100px; display:block; margin: auto;">
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <input type="text" class="form-control" id="forGBP" placeholder="Libras" value="24.22">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <br>
+                                <div class="text-center">
+                                  <button type="button" class="btn btn-primary btn-lg" onclick="funEspera()">Continuar</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="BoxBlack CenterxyBox" id="espera" style="position: absolute;">
+              <div class="BoxLogo">
+                <img src="img/blanco.png">
+              </div>
+
+            </div>
+        <div class="row" id="pasafotos">
+            <div class="col-md-4" style="margin-top:15px;">
+                
+                <div class="BoxDats">
+                    <div class="BoxLogofooter CeroOne" style="text-align:center">
+                        <img src="img/sello.png">
+                    </div>
+                <div class="BoxLote">
+                    <p class="TxtLote">
+                        
+                        <br>
+                       
+                    </p>
+                </div>
+                <div class="BoxEstimadoMXN CeroOne">
+                    <img src="img/mexa.png" class="mxn">
+                    <p class="EstimadoMXN">$ <span id="pPrecio"></span></p>
+                </div>
+                <div class="BoxEstimadoExtrang CeroOne">
+                    <p><span><img src="img/usd.svg" width="50px" class="MoneExtra"></span> <span id="pPrecioUSD"></span></p>
+                    <p><span><img src="img/eur.svg" width="50px" class="MoneExtra"></span> <span id="pPrecioEUR"></span></p>
+                    <p><span><img src="img/lib.svg" width="50px" class="MoneExtra"></span> <span id="pPrecioGBP"></span></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-8" style="margin-top:15px;">
+                <div class="headerLot" style="
+                font-size: 36px;
+                text-align: right;
+            ">
+                    <span id="lotHeader">Lote.</span>
+                </div>
+                <hr style="border-top: 3px solid #000!important;margin-top: 5px!important;margin-bottom: 5px;">
+                <div id="lot-number" style="text-align:right">
+                    <span class="NoLote" style="font-size:70px;" id="pLote">1</span>
+                    <span class="NoLote" style="font-size: 70px;" id="pMensaje"></span>
+                </div>
+                <div class="centerBox" id="main-slider">
+                    <div class="slider-wrapper" id="lotImages">
+                        <div class="ItemImg slide" id="divLot1" >
+                            <!--<div class="ItemImg" style="background-image:url('subastas/1270T/fotos/1_2.jpg');" ></div>-->
+                        </div>
+                        <div class="ItemImg slide" id="divLot2">
+                             <!--<div class="ItemImg" style="background-image:url('subastas/1270T/fotos/1_2.jpg');" ></div>-->
+                      </div>
+                      <div class="ItemImg slide" id="divLot3" >
+                         <!--<div class="ItemImg" style="background-image:url('subastas/0062L/fotos/1_3.jpg');" ></div>-->
+                      </div>
+                    </div>
+                </div>
+
+                <!--<div class="BoxImg slider" id="main-slider">
+                    <div class="slider-wrapper CenterxyBox" id="lotImages">
+    
+                        <div class="ItemImg slide" id="divLot1" >
+                              <div class="ItemImg" style="background-image:url('subastas/1270T/fotos/1_2.jpg');"></div>
+                        </div>
+                        <div class="ItemImg slide" id="divLot2">
+                              <div class="ItemImg" style="background-image:url('subastas/1270T/fotos/1_2.jpg');" ></div>
+                        </div>
+                        <div class="ItemImg slide" id="divLot3" >
+                            <div class="ItemImg" style="background-image:url('subastas/0062L/fotos/1_3.jpg');" ></div>
+                        </div>
+                    </div>
+                </div>-->
+                </div >
+            </div>
+        </div>
+
+        <!-- INICIO    ANTIGUO  -->
+         <!-- 
+        <div class="BoxOne" id="pasafotos">
+            <div class="BoxDats">
+                <div class="BoxLote">
+                    <p class="TxtLote">
+                        Lote. <span class="NoLote" id="pLote"></span>
+                        <br>
+                        <span class="NoLote" style="font-size: 45px;" id="pMensaje"></span>
+                    </p>
+                </div>
+                <div class="BoxEstimadoMXN CeroOne">
+                    <p class="EstimadoMXN"><span id="pPrecio"></span></p>
+                    <img src="img/mxn.svg" class="mxn">
+                </div>
+                <div class="BoxEstimadoExtrang CeroOne">
+                    <p><span><img src="img/usd.svg" width="50px" class="MoneExtra"></span> <span id="pPrecioUSD"></span></p>
+                    <p><span><img src="img/eur.svg" width="50px" class="MoneExtra"></span> <span id="pPrecioEUR"></span></p>
+                    <p><span><img src="img/lib.svg" width="50px" class="MoneExtra"></span> <span id="pPrecioGBP"></span></p>
+                </div>
+                <div class="BoxLogofooter CeroOne ">
+                    <img src="img/logo2.svg">
+                </div>
+            </div>
+            <div class="BoxLt" id="BoxLote1">
+                <div class="BoxImg slider" id="main-slider">
+                    <div class="slider-wrapper CenterxyBox" id="lotImages">
+
+                        <div class="ItemImg slide" id="divLot1">
+                           
+                        </div>
+                        <div class="ItemImg slide" id="divLot2">
+                           
+                        </div>
+                        <div class="ItemImg slide" id="divLot3">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>-->
+
+        <div style="position: absolute; width: 300px; background-color: rgba(0,0,0,0.5); top: 10px; left: 25%; " id="divBuscador">
+            <input class="form-control" placeholder="No. Lote" id="forBuscar" style="margin: 5px 5px; width: 97%;">
+            <span class="input-group-btn">
+                <center>
+                    <button class="btn btn-default" style="margin: 5px 5px;" type="button" onclick="buscarLote()">Buscar</button>
+                </center>
+            </span>
+        </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    </body>
+</html>
